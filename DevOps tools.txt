@@ -1,14 +1,27 @@
 1)Planing and Tracking --> JIRA,Teamforge,IRise,RDV
 --------------------------------------
 2)Build and Continuos Integration CoE
-   a)SCM:   Git,SVN,PERFORCE
-   b)Build: Maven,ANT,Gradle
-   c)CI: Jenkins, Teamcity,Bamboo
-   d)Packaging Repository: Nexus,JFrog,Artifactory
-   e)Automated Code Review: SONARQUBE(Modular apps),CAST(Large Apps),PMD
+ a)SCM:   Git,SVN,PERFORCE
+ b)Build: Maven,ANT,Gradle
+ c)CI: Jenkins, Teamcity,Bamboo
+ d)Packaging Repository: Nexus,JFrog,Artifactory
+ e)Automated Code Review: SONARQUBE(Modular apps),CAST(Large Apps),PMD
 --------------------------------------------
-4)Configuration and Environment Management CoE
-  a)Configuration and Management: CHEF,PUPPET,SALTSTACK,ANSIBLE
-  b)Containerization/Deployment Management tools:Docker
-  c)Server Virtulization: VMWare, Vagrant
-  d)Service Virtualization:LISA
+3)Configuration and Environment Management CoE
+ a)Configuration and Management: CHEF,PUPPET,SALTSTACK,ANSIBLE
+ b)Containerization/Deployment Management tools:Docker
+ c)Server Virtulization: VMWare, Vagrant
+ d)Service Virtualization:LISA
+--------------------------------------------
+4)Automation Testing 
+ a)Automation Unit Testing:Selenium,Junit,TestNG
+ b)Automation Security Testing: FORTIFY,AppScan,
+ c)Automated Functionality Testing: Selenium,Quality Centre, Rational Workbench
+ d)Automated Performance Testing :Loadrunner,JMeter
+----------------------------------------------
+5)Monitoring and Measurement CoE
+ --Splunk,Logstash,New Relic
+-------------------------------
+Cloud CoE
+ --IaaS: AWS,Openstack and MS Cloud or Azure
+ --PaaS:Cloud Foundary,MSCloud and IBM Bluemix
