@@ -1,0 +1,45 @@
+#!/bin/bash
+apt-get update -y
+apt-get install apache2 -y
+aws s3 cp s3://staticwebhostingpoc-1/kalyan.html /var/www/html/ --region ap-south-1
+/etc/init.d/apache2 start 
+---------------------------------------------------
+EFS:
+1)Create 2 instances in two AZ's and Attach a ELB to those .
+2)Create a EFS on the same VPC where insatnces are launched.
+3)Remember to have same SG across all the instances,EFS,ELB's 
+4)Install apache2 or httpd on both instances and remove index.html(if any)
+5)Now got to created EFS tab and look for MOUNT DIRECT option and check in that for direct mount command like below which mounts on efs .
+  --sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 fs-fb28d0c2.efs.ap-southeast-2.amazonaws.com:/ efs
+  --i)sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 fs-fb28d0c2.efs.ap-southeast-2.amazonaws.com:/ /var/www/html
+6)Look down for mount related issues.
+7)use the above mount cmnd for both the instances to have common EFS for both.
+8)now create a index.html file in /var/www/html folder in any one of the instances.
+9) You can see the same HTML file in the other instance as both are sharing same EFS. 
+
+
+EFS mounting issues 
+--
+to mount EFS files system directly to ubuntu use below cmnds to efs(i) and to any location(ii) like /var/www/html/:
+i)sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 fs-fb28d0c2.efs.ap-southeast-2.amazonaws.com:/ efs
+                 or 
+ii)sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 fs-fb28d0c2.efs.ap-southeast-2.amazonaws.com:/ /var/www/html
+
+if we get any issues like below 
+Issue:
+mount: wrong fs type, bad option, bad superblock on fs-fb28d0c2.efs.ap-southeast-2.amazonaws.com:/,
+       missing codepage or helper program, or other error
+       (for several filesystems (e.g. nfs, cifs) you might
+       need a /sbin/mount.<type> helper program)
+
+       In some cases useful info is found in syslog - try
+       dmesg | tail or so.
+
+Solution:
+1) Check to see if package cifs-utils is installed:using ls -l /sbin/mount.cifs
+or 
+2)This is relevant given that you are trying to mount NFS. The /sbin/mount.nfs helper program is provided by nfs-common.
+ You can install it with: sudo apt install nfs-common 
+
+in our case we are mounting nfs4 so install nfs-common package using below cmnd
+sudo apt install nfs-common
