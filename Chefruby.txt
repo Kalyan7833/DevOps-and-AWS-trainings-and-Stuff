@@ -1,0 +1,39 @@
+include_recipe 'ark::default'
+
+# install maven via ark
+ark 'maven' do
+  version node['maven']['3.3.9']
+  url node['maven']['url']
+  checksum node['maven']['checksum']
+  home_dir node['maven']['m2_home']
+  win_install_dir node['maven']['m2_home']
+  append_env_path node['maven']['setup_bin']
+end
+
+# setup environmental variables
+if node['platform_family'] == 'windows'
+  env 'M2_HOME' do
+    value node['maven']['m2_home']
+    action :create
+  end
+  env 'MAVEN_OPTS' do
+    value node['maven']['mavenrc']['opts']
+    action :create
+  end
+else
+  template '/etc/mavenrc' do
+    source 'mavenrc.erb'
+    mode   '0755'
+  end
+end
+
+
+ruby_block 'set-env-java-home' do
+  block do
+    ENV['JAVA_HOME'] = java_home
+  end
+end 
+
+
+
+/usr/lib/jvm/java-8-oracle/jre/bin/java

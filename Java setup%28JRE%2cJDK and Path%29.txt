@@ -1,0 +1,105 @@
+Installing Java JDK and JRE 
+-------------------------------
+1) sudo apt-get update
+2) sudo apt-get install default-jre
+3) sudo apt-get install default-jdk or 
+
+for the latest oracle jdk 8 r 9 package use(Installing the Oracle JDK)
+3(i) sudo add-apt-repository ppa:webupd8team/java(If you want to install the Oracle JDK, which is the official version distributed by Oracle, 
+you will need to follow a few more steps.First, add Oracle's PPA, then update your package repository
+
+ (ii)sudo apt-get update
+
+depending on the version you want to install, execute one of the following command
+
+3) sudo apt-get install oracle-java8-installer 
+4)sudo apt-get install oracle-java9-installer
+
+Any errors use :
+1)As root, go to this folder: /etc/apt/sources.list.d
+2)Locate this file: webupd8team-java.list and delete it.
+3)Execute sudo apt-get update for the system to remove any reference to that update server.
+4)Execute add-apt-repository ppa:webupd8team/java to add the correct ppa to your system.
+5)Execute sudo apt-get update again and you should be able to install everything correctly.
+6)I would recommend you installed oracle-java8-set-default too in order to make this java package 
+the default java on your system.
+  
+------------------OR to install use below---------
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+Then , to install a specific jdk run these:
+jdk6:
+sudo apt-get install oracle-java6-installer
+jdk7:
+sudo apt-get install oracle-java7-installer
+jdk8:
+sudo apt-get install oracle-java8-installer
+
+
+
+Managing Java 
+------------------------------
+1) sudo update-alternatives --config java   -->(You can configure which version is the default for use in the command line by using update-alternatives)
+the above cmnd gives below output 
+               Output
+There are 5 choices for the alternative java (providing /usr/bin/java).
+
+  Selection    Path                                            Priority   Status
+------------------------------------------------------------
+* 0            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      auto mode
+  1            /usr/lib/jvm/java-6-oracle/jre/bin/java          1         manual mode
+  2            /usr/lib/jvm/java-7-oracle/jre/bin/java          2         manual mode
+  3            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      manual mode
+  4            /usr/lib/jvm/java-8-oracle/jre/bin/java          3         manual mode
+  5            /usr/lib/jvm/java-9-oracle/bin/java              4         manual mode
+
+Press <enter> to keep the current choice[*], or type selection number:
+You can now choose the number to use as a default. This can also be done for other Java commands,
+such as the compiler (javac), the documentation generator (javadoc), the JAR signing tool (jarsigner), 
+and more. You can use the following command, filling in the command you want to customize.
+
+2) sudo update-alternatives --config command
+
+Setting the JAVA_HOME Environment Variable
+=====================================================
+1) sudo update-alternatives --config java  ---> to find out where Java is installed
+or 
+1) which java 
+
+2) sudo nano /etc/environment -->Copy the path from your preferred installation and 
+then open /etc/environment using nano or your favorite text editor
+
+3) JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+At the end of this file, add the following line, making sure to replace the highlighted path with your own copied path
+and Save and exit the file, and reload it.
+
+4) source /etc/environment  
+
+5)echo $JAVA_HOME   ->You can now test whether the environment variable has been set by executing the following command 
+which will return below cmnd 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
