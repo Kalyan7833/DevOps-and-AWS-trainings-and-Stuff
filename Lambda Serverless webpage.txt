@@ -1,0 +1,20 @@
+              AWS Lambda
+Serverless webpage
+---------------------
+1)Create a funtion which "Author from scratch".
+ --Name,Runtime(depending on prgrmng lang u use(C#,Go 1.x, Java,Node.js,Python),Role (new role from template),Role name,Policy Templates(Simple micro services)
+2)In configuration tab, copy and paste the code of python or any language as per ur run time envirnmnt.
+3)Triggering (Designer) will be done by API gateway,AWS IoT,CloudWatch Events, CloudWatch Logs ,CodeCommit,Cognito Sync Trigger,DynamoDB,Kinesis,S3,SNS).
+4)Select the name ,Environment(Test/Dev/Prod) and Role to secure the Lambda(IAM Role) and save.
+5)It gives a API gateway with a URL but URL doesn't work.
+6)Now try opening the link with the name of Funtion which takes u to the API Gateway page which shows the method of Execution.
+7)the method we get by default is "ANY" , delete this "ANY" method of execution as we want it to execute from HTTP.
+8)Create a new method called "GET" and select Lambda Function, also check the use lambda proxy integration, select region which we are in and select the Lambda function.
+9)We'll get a URL to open which is activated now to check if the code pasted in function code is working or not by displaying the content.
+10)Now the above mentioned URL and paste it in the code of index.html.
+11) create a S3 bucket and upload index and error html files.
+12)Open IAM and you can see a Role which is created with name given in step-1 with basic execution and microservice execution.
+13)We can additional polices as per the requirment.
+14)Configuring Route53 to redirect the DNS requests for our DNS name.
+**Make sure before buying a domain name ,the name of the domain should be aailable to u in S3 to create a bucket.
+15)  
