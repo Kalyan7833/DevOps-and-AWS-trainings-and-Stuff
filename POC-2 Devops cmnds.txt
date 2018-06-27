@@ -1,0 +1,28 @@
+sudo su
+apt-get update
+sudo apt-get install default-jre -Y
+sudo apt-get install default-jdk -Y
+vi /etc/environment
+JAVA_HOME="/usr/lib/jvm/java-7-oracle/jre/"
+source /etc/environment
+echo $JAVA_HOME
+apt-get install git-core
+apt-get update
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins -y
+sudo apt-get update
+apt-get install maven -y
+apt-get update
+sudo apt-get install apache2 mariadb-server -y
+export JAVA_HOME=$(/usr/bin/java)
+
+
+
+
+/var/lib/jenkins/secrets/initialAdminPassword
+git push -u origin master
+git pull origin master
+
+
