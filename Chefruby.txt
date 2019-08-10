@@ -33,7 +33,7 @@ ruby_block 'set-env-java-home' do
     ENV['JAVA_HOME'] = java_home
   end
 end 
-
+.
 
 
 /usr/lib/jvm/java-8-oracle/jre/bin/java
